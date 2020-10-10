@@ -31,6 +31,7 @@ variables. Since a roommate now needs to release the lock to the kitchen while g
 store, you will no longer acquire the lock at the start of this function and release it at the end.
 Instead, this function will call two helper-functions, each of which acquires/releases the lock.
 For example:
+
 ```c++
 int Kitchen::drinkMilkAndBuyIfNeeded() {
     int iShouldBuy = waitThenDrink();
@@ -39,6 +40,7 @@ int Kitchen::drinkMilkAndBuyIfNeeded() {
     }
 }
 ```
+
 In this function, waitThenDrink() should wait if there is no milk (using a condition variable)
 until there is milk, drink the milk, and if the milk is now gone, return a nonzero value to flag that
 the caller should buy milk. BuyMilk() should buy milk and then broadcast to let the waiting
