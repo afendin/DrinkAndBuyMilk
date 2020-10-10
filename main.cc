@@ -1,4 +1,5 @@
-#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 #include "3rdparty/thread.h"
 #include "kitchen.h"
@@ -8,7 +9,6 @@ using namespace std;
 Kitchen *kitchen;
 
 void milkFunction(int threadNum);
-
 
 int main()
 {
@@ -37,10 +37,7 @@ void milkFunction(int threadNum)
 {
     int drinkTimes = random() % 100;
     for (int i = 0; i < drinkTimes; i++) {
-        if (kitchen->drinkMilkAndBuyIfNeeded())
-            printf("Roommate %d finished milk and bought one.\n", threadNum);
-        else
-            printf("Roommate %d drunk milk and left a little for a friend.\n", threadNum);
+        kitchen->drinkMilkAndBuyIfNeeded(threadNum);
     }
 }
 
